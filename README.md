@@ -63,7 +63,6 @@ Paste the policy that we have gotten from the CloudFront to the policy editor.
 
 ![](Attachments/policyeditor.png)
 
-
 ## Adding DNS
 
 With the help of Route53 we can add our own custom domain into this project.
