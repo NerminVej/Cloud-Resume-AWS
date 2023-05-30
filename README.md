@@ -53,18 +53,21 @@ We select Origin access control settings for the "Origin access" and then we cop
 
 ![](Attachments/distirbutioncloudfront.png)
 
-Now we go on our Bucket policy and edit it.
+We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
+
+![](Attachments/httpssetting.png)
+
+Now we can go back to the Distribution and copy the policy. go on our Bucket policy and edit it.
 
 Paste the policy that we have gotten from the CloudFront to the policy editor.
 
 ![](Attachments/policyeditor.png)
 
-We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
-
-![](Attachments/httpssetting.png)
 
 ## Adding DNS
 
 With the help of Route53 we can add our own custom domain into this project.
 I will skip this step since I am using AWS free tier and it only has limited resources.
+
+# Step 3: API and DynamoDB
 
