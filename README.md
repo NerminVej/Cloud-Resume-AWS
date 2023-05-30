@@ -24,9 +24,13 @@ Lets type into the search bar "S3" and create a S3 Bucket to which we can upload
 
 We have no buckets at the moment in here so its all empty. Let us create a new bucket for this project!
 
-
+![](Attachments/mybucket.png)
 
 We can now upload files to our bucket so let us upload our frontend folder that we have created for this project onto our bucket.
+
+![](Attachments/uploadhere.png)
+
+![](Attachments/uploadsuccessful.png)
 
 Let us also make sure that our "Default root object" is the "index.html" file of our frontend website. This specifies what the default root object should be, when we access the created CloudFront URL.
 
@@ -37,15 +41,21 @@ We have made our bucket not public yet so we are not able to access the contents
 Search up "CloudFront" in the search bar.
 CloudFront is a AWS service to handle data with low latency and a high transfer speed.
 
+![](Attachments/CloudFront.png)
+
 Create a distribution. (Take the S3 Bucket that you have created in the previous step).
 
 We select Origin access control settings for the "Origin access" and then we copy the policy. With this we can allow CloudFront to use these settings to allow us to see the insides of the specified bucket.
+
+![](Attachments/distirbutioncloudfront.png)
 
 Now we go on our Bucket policy and edit it.
 
 Paste the policy that we have gotten from the CloudFront to the policy editor.
 
 We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
+
+![](Attachments/httpssetting.png)
 
 ## Adding DNS
 
