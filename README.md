@@ -47,3 +47,8 @@ Paste the policy that we have gotten from the CloudFront to the policy editor.
 
 We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
 
+## Adding DNS
+
+With the help of Route53 we can add our own custom domain into this project.
+I will skip this step since I am using AWS free tier and it only has limited resources.
+
