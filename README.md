@@ -28,9 +28,22 @@ We have no buckets at the moment in here so its all empty. Let us create a new b
 
 We can now upload files to our bucket so let us upload our frontend folder that we have created for this project onto our bucket.
 
-Let us go to our bucket once more to setup a setting. Scroll to the bottom until you find the setting "Static website hosting" and redirect the traffic to the "index.html" file.
+Let us also make sure that our "Default root object" is the "index.html" file of our frontend website. This specifies what the default root object should be, when we access the created CloudFront URL.
 
 We have made our bucket not public yet so we are not able to access the contents of the bucket yet. For that we will use CloudFront.
 
 ## CloudFront
+
+Search up "CloudFront" in the search bar.
+CloudFront is a AWS service to handle data with low latency and a high transfer speed.
+
+Create a distribution. (Take the S3 Bucket that you have created in the previous step).
+
+We select Origin access control settings for the "Origin access" and then we copy the policy. With this we can allow CloudFront to use these settings to allow us to see the insides of the specified bucket.
+
+Now we go on our Bucket policy and edit it.
+
+Paste the policy that we have gotten from the CloudFront to the policy editor.
+
+We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
 
