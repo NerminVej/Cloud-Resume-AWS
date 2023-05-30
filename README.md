@@ -34,6 +34,10 @@ We can now upload files to our bucket so let us upload our frontend folder that 
 
 Let us also make sure that our "Default root object" is the "index.html" file of our frontend website. This specifies what the default root object should be, when we access the created CloudFront URL.
 
+![](Attachments/defaultrootsettting.png)
+
+![](Attachments/defaultrootobject.png)
+
 We have made our bucket not public yet so we are not able to access the contents of the bucket yet. For that we will use CloudFront.
 
 ## CloudFront
@@ -52,6 +56,8 @@ We select Origin access control settings for the "Origin access" and then we cop
 Now we go on our Bucket policy and edit it.
 
 Paste the policy that we have gotten from the CloudFront to the policy editor.
+
+![](Attachments/policyeditor.png)
 
 We go back to the CloudFront settings and under "Viewer protocol policy" we select "HTTPS only" so that our connection is secured.
 
