@@ -86,7 +86,7 @@ Now we want to create an item that stores our "views".
 
 ![](Attachments/views%20attribute.png)
 
-## API
+# API
 
 Since we don't want to fetch directly from DynamoDB we will create a lambda function that does that for us.
 
@@ -118,7 +118,41 @@ With these settings we can create our Lambda function now.
 
 Now we can edit our lambda function. We want to create a function that fetches data from the DynamoDB database.
 
-![](Attachments/lambdafunction%20createdinpython.png)
+![](Attachments/lambdafunctionpython.png)
+
+Let us go one by one what the code does.
+
+boto3 is used to interact with AWS services and we specify that we want to interact with the "dynamodb" data source.
+
+![](Attachments/boto3.png)
+
+In the line below we are calling our table that we have created in the previous step.
+
+Then we get an item from the table where the id equals 1. Since this is where our value "views" is stored.
+
+![](Attachments/keyfromtable.png)
+
+![](Attachments/viewsattributeshowcase.png)
+
+Then we want to take the view count and increase it by 1.
+
+![](Attachments/viewcountplusone.png)
+
+At the end we update the table with the new view count that got increased by one.
+
+![](Attachments/updatedviewcount.png)
+
+We also have to update the permissions of the lambda function so that it can update the viewer count.
+
+![](Attachments/attach%20policies.png)
+
+Let us attach a dynamodb policy.
+
+![](Attachments/policiesdynammodblambda.png)
+
+We go with the "FullAccess" one.
+
+
 
 
 
