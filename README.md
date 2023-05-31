@@ -118,6 +118,8 @@ With these settings we can create our Lambda function now.
 
 Now we can edit our lambda function. We want to create a function that fetches data from the DynamoDB database.
 
+![](Attachments/lambdafunction%20createdinpython.png)
+
 
 
 
