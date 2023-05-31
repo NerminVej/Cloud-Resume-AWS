@@ -88,5 +88,36 @@ Now we want to create an item that stores our "views".
 
 ## API
 
-Since we dont want to fetch directly from DynamoDB we will create a lambda function that does that for us.
+Since we don't want to fetch directly from DynamoDB we will create a lambda function that does that for us.
+
+So let us create a lambda function. We type in "lambda" into the search bar and create a new lambda function.
+
+![](Attachments/createlambda.png)
+
+This is pretty straight forward. We pick our programmming langauge that we are going to use to create the backend. I choose Python.
+
+![](Attachments/pythonapi.png)
+
+Inside of the advanced settings I also enable the function URL. So that we can assign HTTPS endpoints to our Lambda function. So we gain a public URL with which we can invoke our lambda function through.
+
+![](Attachments/enablefunctionurl.png)
+
+Settings I also enable are.
+
+![](Attachments/nonesetting.png)
+
+So that there is no authentication needed.
+
+![](Attachments/CORSsetting.png)
+
+with CORS we can whitelist our own domain to have access to our resume.
+
+With these settings we can create our Lambda function now.
+
+![](Attachments/codeeditor.png)
+
+Now we can edit our lambda function. We want to create a function that fetches data from the DynamoDB database.
+
+
+
 
