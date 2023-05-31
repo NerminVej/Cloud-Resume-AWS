@@ -70,3 +70,15 @@ I will skip this step since I am using AWS free tier and it only has limited res
 
 # Step 3: API and DynamoDB
 
+Lets search for "DynamoDB" in the search bar and create a table.
+
+![](Attachments/dynamocreatetable.png)
+
+Its important that we create a "Partition key" mine will be set to "id".
+
+![](Attachments/partition%20key.png)
+
+We now have created a DynamoDB table so let us create an item inside of the table.
+
+![](Attachments/createitem.png)
+
