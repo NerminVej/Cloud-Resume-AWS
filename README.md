@@ -152,6 +152,8 @@ Let us attach a dynamodb policy.
 
 We go with the "FullAccess" one.
 
+# JavaScript (Frontend)
+
 
 
 
