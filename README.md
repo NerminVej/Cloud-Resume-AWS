@@ -82,3 +82,11 @@ We now have created a DynamoDB table so let us create an item inside of the tabl
 
 ![](Attachments/createitem.png)
 
+Now we want to create an item that stores our "views".
+
+![](Attachments/views%20attribute.png)
+
+## API
+
+Since we dont want to fetch directly from DynamoDB we will create a lambda function that does that for us.
+
