@@ -192,6 +192,104 @@ counterUpdater();
 At the end we just call the function.
 
 
+# CI/CD
+
+We want to make sure that if we update something in our code that it gets pushed to our GitHub aswell as the S3 Bucket on AWS. And for that we use CI/CD pipelines.
+
+````
+name : Upload website to S3
+
+  
+
+on:
+
+  push:
+
+    branches:
+
+    - main
+
+  
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@master
+
+    - uses: jakejarvis/s3-sync-action@master
+
+    with:
+
+      args: --acl public-read --follow-symmlinks --delete
+
+    env:
+
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_Bucket}}
+
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+
+      AWS_SECRETS_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+
+      AWS_REGION: "eu-central-1"
+
+      SOURCE_DIR: "frontend"
+`````
 
 
+The yaml file triggers when there is a push on the main branch.
+
+````
+on:
+
+  push:
+
+    branches:
+
+    - main
+`````
+
+It runs on the latest Ubuntu container.
+
+````
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+`````
+
+We then use an action from "jakejarvis" that we can find on the AWS marketplace With some arguments.
+
+````
+    steps:
+
+    - uses: actions/checkout@master
+
+    - uses: jakejarvis/s3-sync-action@master
+
+    with:
+
+      args: --acl public-read --follow-symmlinks --delete
+`````
+
+We also need secret keys since without them we wont be able to upload our data (Not gonna show mine here).
+
+````
+    env:
+
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_Bucket}}
+
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
+
+      AWS_SECRETS_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+
+      AWS_REGION: "eu-central-1"
+
+      SOURCE_DIR: "frontend"
+`````
 
