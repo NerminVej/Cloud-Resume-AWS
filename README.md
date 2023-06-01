@@ -293,5 +293,21 @@ We also need secret keys since without them we wont be able to upload our data (
       SOURCE_DIR: "frontend"
 `````
 
-Now we can push our yaml file onto GitHub.
+Now we can push our yaml file onto GitHub. If we go into actions we should see something like this.
+
+![](Attachments/nosecretkeysetup.png)
+
+This is because there are no secret keys that got set up.
+We can set this up in the settings tab.
+
+![](Attachments/settings%20tab.png)
+
+Then we go on "Secrets and variables". Here we can set them up.
+
+![](Attachments/secretsandvariables.png)
+
+![](Attachments/actionssecretsandvariables.png)
+
+
+# Terraform (IaC)
 
