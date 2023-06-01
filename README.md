@@ -385,3 +385,16 @@ resource "aws_iam_role" "iam_for_lambda" {
 }
 `````
 
+The "data.archive_file.zip" block creates a ZIP archive of the "lambda/" directory within the module. It specifies the source directory using ``${path.module}/lambda/`` and the output path of the ZIP archive using ``${path.module}/packedlambda.zip.``
+
+````
+data "archive_file" "zip" {
+    type = "zip"
+    source_dir = "${path.module}/lambda/"
+    output_path = "${path.module}/packedlambda.zip"
+    
+}
+`````
+
+With ``terraform init`` , ``terraform plan`` and ``terraform apply`` we can apply the configurations and create the Lambda function and IAM role.
+
