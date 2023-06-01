@@ -293,3 +293,5 @@ We also need secret keys since without them we wont be able to upload our data (
       SOURCE_DIR: "frontend"
 `````
 
+Now we can push our yaml file onto GitHub.
+
