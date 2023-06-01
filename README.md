@@ -398,3 +398,29 @@ data "archive_file" "zip" {
 
 With ``terraform init`` , ``terraform plan`` and ``terraform apply`` we can apply the configurations and create the Lambda function and IAM role.
 
+We also create the lambda function "myfunction" with python. This will be the same as the lambda function that we have created in the "Lambda Function" section.
+
+If we apply the terraform file we will see that our Lambda function wont have a function URL set up. For that we need to add another resource.
+
+````
+resource "aws_lambda_function_url" "url1" {
+    function_name = aws_lambda_function.myfunc.function_name
+    authorization_type = "NONE"
+
+    cors {
+        allow_credentials = true
+        allow_origins = ["*"]
+        allow_methods = ["*"]
+        allow_headers = ["date", "keep-alive"]
+        expose_headers = ["keep-alive", "date"]
+        max_age = 86400
+    }
+}
+`````
+
+At first we want to create a Lambda function URL relationship. And with "NONE" we make sure, that there is no form of authorization required.
+
+The "cors" block specifies the CORS sconfiguration for the Lambda function endpoint. We can set up here that it should only allow requests from only our own resume website but I have it set to allow all origins with the "*".
+
+
+
