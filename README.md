@@ -182,6 +182,15 @@ async function counterUpdater() {
 
 
 We have made a function called "counterUpdater" which does a fetch request to our lambda API.
+The data that the fetch request gets is getting stored inside of a variable called "data".
+Now we update the "counter-num"  inside of our HTML file so it shows the actual view count from our DynamoDB database.
+
+````js
+counterUpdater();
+`````
+
+At the end we just call the function.
+
 
 
 
