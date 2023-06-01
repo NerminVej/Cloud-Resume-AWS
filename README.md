@@ -311,3 +311,77 @@ Then we go on "Secrets and variables". Here we can set them up.
 
 # Terraform (IaC)
 
+So now we do IaC with Terraform. We create first a provider.tf file and then a main.tf file with all of our main IaC code in it.
+
+````
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "3.60.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-central-1"
+  access_key = "YOUR_ACCESS_KEY"
+  secret_access_key = "YOUR_SECRET_ACCESS_KEY"
+}
+`````
+
+We first set up the required provider, since we can use Terraform with multiple cloud providers.
+Then we set up which region we are on and what our secret keys are (again left blank by me here).
+
+Now we create the main.tf file where our main IaC will go.
+
+We start with our lambda function.
+
+````
+resource "aws_lambda_function" "myfunction" {
+    filename = data.archive_file.zip.output_path
+    source_code_hash = data.archive_file.zip.output_base64sha256
+    function_name = "myfunction"
+    role = aws_iam_role.iam_for_lambda.arn
+    handler = "function.handler"
+    runtime = "python3.10"
+}
+`````
+
+We start off with our "aws_lambda_function" block that creates an AWS Lambda function with the specified properties:
+- filename
+	- Reference to the output path of the ZIP archive created by the "data.archive_file.zip".
+- source_code_hash
+	- Uses the output SHA256 hash of the ZIP archive created by the "data.archive_file.zip".
+- function_name
+	- Specifies the name of the Lambda function.
+- role
+	- References the ARN of the IAM role created by the "aws_iam_role.iam_for_lambda" resource.
+- handler
+	- Specifies the handler for the Lambda function.
+- runtime
+	- It sets the runtime for the Lambda function to Python 3.10
+
+The "aws_iam_role" resource block creates an IAMM role with the necessary trust policy for the Lambda function to assume the role. It specifies the name of the IAM role and the JSON policy document using the "assume_role_policy" parameter.
+
+````
+resource "aws_iam_role" "iam_for_lambda" {
+    name = "iam_for_lambda"
+    assume_role_policy = >>EOF
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": "sts:AssumeRole",
+                "Principal": {
+                    "Service": "Lambda.amazonaws.com"
+                },
+                "Effect": "Allow",
+                "Sid": ""
+            }
+        ]
+    }
+    EOF
+}
+`````
+
