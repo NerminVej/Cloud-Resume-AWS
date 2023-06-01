@@ -166,13 +166,20 @@ I have also linked my index.js file inside of my index.html file.
 
 ![](Attachments/index.js%20at%20the%20end.png)
 
-
-`async function counterUpdater() {
+`
+````js
+async function counterUpdater() {
 
     let response = await fetch("https://vn5uuvvlw6i4yjpgk5x5pg45oe0qhlis.lambda-url.eu-central-1.on.aws/")
+
     let data = await response.json();
-    counter.innerHTML = ` Views: ${data};
-}`
+
+    counter.innerHTML = ` Views: ${data}`;
+
+}
+
+`````
+
 
 We have made a function called "counterUpdater" which does a fetch request to our lambda API.
 
