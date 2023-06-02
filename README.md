@@ -2,7 +2,13 @@
 
 This is my resume hosted on a AWS
 
-
+Here are the steps taken to accomplish this project:
+1. Create an AWS account and give the account permissions.
+2. Create a S3 Bucket and upload our frontend to it. (Going over CloudFront and DNS aswell)
+3. Setting up an API with Python and DynamoDB.
+4. Implementing the script for a counter variable inside of JavaScript (Frontend)
+5. Creating CI/CD Pipelines
+6. Creating IaC (Infrastructre as Code) using Terraform
 
 # Step 1: Create an AWS account and give the account permissions.
 
@@ -154,7 +160,7 @@ Let us attach a dynamodb policy.
 
 We go with the "FullAccess" one.
 
-# Step 4: JavaScript (Frontend)
+# Step 4: Implementing the script for a counter variable inside of JavaScript (Frontend)
 
 Now we want to write a function inside of our frontend that updates the counter.
 
@@ -194,7 +200,7 @@ counterUpdater();
 At the end we just call the function.
 
 
-# Step 5: CI/CD
+# Step 5: Creating CI/CD Pipelines
 
 We want to make sure that if we update something in our code that it gets pushed to our GitHub aswell as the S3 Bucket on AWS. And for that we use CI/CD pipelines.
 
@@ -311,7 +317,7 @@ Then we go on "Secrets and variables". Here we can set them up.
 ![](Attachments/actionssecretsandvariables.png)
 
 
-# Step 6: Terraform (IaC)
+# Step 6: Creating IaC (Infrastructre as Code) using Terraform
 
 So now we do IaC with Terraform. We create first a provider.tf file and then a main.tf file with all of our main IaC code in it.
 
