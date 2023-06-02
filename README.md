@@ -152,7 +152,7 @@ Let us attach a dynamodb policy.
 
 We go with the "FullAccess" one.
 
-# JavaScript (Frontend)
+# Step 4: JavaScript (Frontend)
 
 Now we want to write a function inside of our frontend that updates the counter.
 
@@ -192,7 +192,7 @@ counterUpdater();
 At the end we just call the function.
 
 
-# CI/CD
+# Step 5: CI/CD
 
 We want to make sure that if we update something in our code that it gets pushed to our GitHub aswell as the S3 Bucket on AWS. And for that we use CI/CD pipelines.
 
@@ -309,7 +309,7 @@ Then we go on "Secrets and variables". Here we can set them up.
 ![](Attachments/actionssecretsandvariables.png)
 
 
-# Terraform (IaC)
+# Step 6: Terraform (IaC)
 
 So now we do IaC with Terraform. We create first a provider.tf file and then a main.tf file with all of our main IaC code in it.
 
@@ -473,4 +473,5 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 
 With this the IAM role can inherit the permissions defined in the policy.
 
+This concludes the Cloud Resume Project.
 
