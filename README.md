@@ -317,7 +317,7 @@ Then we go on "Secrets and variables". Here we can set them up.
 ![](Attachments/actionssecretsandvariables.png)
 
 
-# Step 6: Creating IaC (Infrastructre as Code) using Terraform
+# Step 6: Creating IaC (Infrastructure as Code) using Terraform
 
 So now we do IaC with Terraform. We create first a provider.tf file and then a main.tf file with all of our main IaC code in it.
 
