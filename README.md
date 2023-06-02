@@ -1,6 +1,6 @@
 # Cloud-Resume-AWS
 
-This is my resume hosted on a AWS
+This is my resume hosted on AWS.
 
 Here are the steps taken to accomplish this project:
 1. Create an AWS account and give the account permissions.
