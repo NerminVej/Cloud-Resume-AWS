@@ -420,7 +420,57 @@ resource "aws_lambda_function_url" "url1" {
 
 At first we want to create a Lambda function URL relationship. And with "NONE" we make sure, that there is no form of authorization required.
 
-The "cors" block specifies the CORS sconfiguration for the Lambda function endpoint. We can set up here that it should only allow requests from only our own resume website but I have it set to allow all origins with the "*".
+The "cors" block specifies the CORS sconfiguration for the Lambda function endpoint. We can set up here that it should only allow requests from only our own resume website but I have it set to allow all origins with the " * ".
 
+Our Lambda function needs access to DynamoDB so we have to add anohter resource to it for the code to work properly.
+
+````
+resource "aws_iam_policy" "iam_policy_for_resume_project" {
+    name = "aws_iam_policy_for_terraform_resume_project_policy"
+    path = "/"
+    desscription = "AWS IAM Policy for managing the role of the resume project"
+        policy = jsonencode(
+            {
+                "Version" : "2012-10-17",
+                "Statement" : [
+                    {
+                        "Action" : [
+                            "logs:CreateLogGroup",
+                            "logs:CreateLogStream",
+                            "logs:PutLogEvents"
+                        ],
+                        "Resource" : "arn:aws:logs:*:*:*"
+                        "Effect" : "Allow"
+                    },
+                    {
+                        "Effect" : "Allow",
+                        "Action" : [
+                            "dynamodb:UpdateItem",
+                            "dynamodb:GetItem"
+                        ],
+                        "Resource" : "arn:aws:dynamodb:*:*:table/cloud-resume"
+                    },
+                ]
+            }
+        )
+}
+`````
+
+We create an AWS IAM policy resource with the name "iam_policy_for_resume_project".
+"name" is the name of the IAM policy.
+"path" is the path of the policy.
+"description" is the description of the policy.
+"policy" is defined using "jsonencode" function to convert a JSON object into a string. It specifies what is allowed and what is not by the policy.
+
+Now we want to create an attachment between an AWS IAM policy and an IAM role.
+
+````
+resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+    role = aws_iam_role_for_lambda.name
+    policy_arn = aws_iam_policy iam_policy_for_resume_project.arn
+}
+`````
+
+With this the IAM role can inherit the permissions defined in the policy.
 
 
