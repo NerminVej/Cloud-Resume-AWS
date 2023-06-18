@@ -2,8 +2,6 @@
 
 This is my resume hosted on AWS.
 
-Link to the resume (This one is hosted on GitHub Pages): https://nerminvej.github.io/Cloud-Resume-AWS.github.io/
-
 Here are the steps taken to accomplish this project:
 1. Create an AWS account and give the account permissions.
 2. Create a S3 Bucket and upload our frontend to it. (Going over CloudFront and DNS aswell)
